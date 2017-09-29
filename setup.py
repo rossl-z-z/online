@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
 
+import os
+os.system("java -jar ditaa.jar ditaa_test.txt")
 
 setup (
     name             = "testapp",
