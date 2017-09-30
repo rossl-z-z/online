@@ -2,12 +2,6 @@ from setuptools import setup, find_packages
 from pathlib import Path
 import os
 
-print(os.environ.get('BUILD'))
-if 'BUILD' in os.environ:
-    d = os.environ.get('BUILD')
-    if d.get('kind') == 'Build':
-        print("DERPPP")
-
 jre_dir = Path("/opt/app-root/src/jre1.8.0_152")
 if jre_dir.is_dir():
   os.system("export JAVA_HOME=~/jre1.8.0_152; export PATH=\"$JAVA_HOME/bin:$PATH\"; java -jar ditaa.jar ditaa_test.txt")
