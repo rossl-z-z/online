@@ -2,13 +2,17 @@ from setuptools import setup, find_packages
 from pathlib import Path
 import os
 
-jre_dir = Path("~/jre1.8.0_152")
-if not jre_dir.is_dir():
+print(os.environ['BUILD'])
+if os.environ['BUILD']['kind'] == 'Build':
+    print("DERPPP")
+
+jre_dir = Path("/opt/app-root/src/jre1.8.0_152")
+if jre_dir.is_dir():
+  os.system("export JAVA_HOME=~/jre1.8.0_152; export PATH=\"$JAVA_HOME/bin:$PATH\"; java -jar ditaa.jar ditaa_test.txt")
+else:
   os.system("wget http://download.java.net/java/jdk8u152/archive/b05/binaries/jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz")
   os.system("tar -xvf jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz")
   os.system("rm jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz")
-
-os.system("export JAVA_HOME=~/jre1.8.0_152; export PATH=\"$JAVA_HOME/bin:$PATH\"; java -jar ditaa.jar ditaa_test.txt")
 
 setup (
     name             = "testapp",
