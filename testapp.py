@@ -21,7 +21,7 @@ lookup = TemplateLookup(
              encoding_errors='replace'
          )
 
-def serve(environ, start_response):
+def application(environ, start_response):
     """serves requests using the WSGI callable interface."""
     fieldstorage = cgi.FieldStorage(
             fp = environ['wsgi.input'],
