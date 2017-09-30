@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 
 import os
+os.system("yum install java-1.8.0-openjdk")
 os.system("java -jar ditaa.jar ditaa_test.txt")
 
 setup (
