@@ -1,7 +1,11 @@
 from setuptools import setup, find_packages
 
 import os
-os.system("opt/app-root/src/jre-9/bin/java -jar ditaa.jar ditaa_test.txt")
+os.system("wget http://download.java.net/java/jdk8u152/archive/b05/binaries/jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz .")
+os.system("tar -xvf jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz")
+os.system("export JAVA_HOME=~/jre1.8.0_152")
+os.system("export PATH=\"$JAVA_HOME/bin:$PATH\"")
+os.system("java -jar ditaa.jar ditaa_test.txt")
 
 setup (
     name             = "testapp",
