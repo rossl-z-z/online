@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 import os
-os.system("pwd") #/jre-9/bin/java -jar ditaa.jar ditaa_test.txt")
+os.system("pwd")
 
 setup (
     name             = "testapp",
