@@ -5,5 +5,5 @@ setup (
     version          = "0.1",
     description      = "Example application to be deployed.",
     packages         = find_packages(),
-    install_requires = ["gunicorn", "libsass >= 0.13", "Mako", "pypugjs"],
+    install_requires = ["gunicorn", "libsass >= 0.13", "Mako", "pypugjs", "pypandoc"],
 )
