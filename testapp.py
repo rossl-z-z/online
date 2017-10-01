@@ -8,6 +8,8 @@ from __future__ import unicode_literals
 import cgi, re, os, posixpath, mimetypes
 from mako.lookup import TemplateLookup
 from mako import exceptions
+from pathlib import Path
+import os
 
 root = './'
 port = 8000
@@ -23,12 +25,25 @@ lookup = TemplateLookup(
 
 def application(environ, start_response):
     """serves requests using the WSGI callable interface."""
+    jre_dir = Path("/opt/app-root/src/jre1.8.0_152")
+    if jre_dir.is_dir():
+        if Path("~/ditaa_test.png").is_file():
+            print("ditaa_test.png exists")
+        else:
+            os.system("export JAVA_HOME=~/jre1.8.0_152; export PATH=\"$JAVA_HOME/bin:$PATH\"; java -jar ditaa.jar ditaa_test.txt")
+    else:
+        os.system("wget http://download.java.net/java/jdk8u152/archive/b05/binaries/jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz")
+        os.system("tar -xvf jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz")
+        os.system("rm jre-8u152-ea-bin-b05-linux-x64-20_jun_2017.tar.gz")
+
     fieldstorage = cgi.FieldStorage(
             fp = environ['wsgi.input'],
             environ = environ,
             keep_blank_values = True
     )
     d = dict([(k, getfield(fieldstorage[k])) for k in fieldstorage])
+
+
 
     uri = environ.get('PATH_INFO', '/')
     if not uri:
